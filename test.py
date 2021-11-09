@@ -1,7 +1,0 @@
-print('test')
-print('test again')
-print('nihao')
-print("hahaha")
-print('hehehe')
-print('it\'s me again')
-print('srsly not very smart')
