@@ -1,14 +1,14 @@
 {"intents": [
         {"tag": "greeting_question1",
          "patterns": ["How are you?", "How's your day?", "How do you do?", "How have you been?", "How are you doing?",
-           "How is it going?", "Are you OK?", "Alright, mate?", "Alright?"],
-         "responses": ["Hello there, I'm doing great!", "Hello there, I'm feeling great!", "Been doing fine, thanks for asking!",
+           "How is it going?", "Are you OK?", "Alright, mate?", "You alright?"],
+         "responses": ["Hello there, I'm doing great!", "Hello there, I'm feeling good!", "Been doing fine, thanks for asking!",
            "I'm all good."],
          "context_set": ""
         },
         {"tag": "greeting_question2",
          "patterns": ["What's up?", "Sup?", "Wassup", "Whatsup", "What's crackin'?", "Howya?", "What's the story?"],
-         "responses": ["I'm good.", "Hi, good to see you again!", "Hi there!"],
+         "responses": ["I'm good.", "Hi, good to see you again!", "Hi there!", "Hey there!"],
          "context_set": ""
         },
         {"tag": "greeting_question3",
@@ -18,7 +18,7 @@
         },
         {"tag": "greeting_slang",
          "patterns": ["Yo!", "Yoyo", "Heyy", "Hiya!", "Ahoy!", "Howdy!"],
-         "responses": ["Hello!", "Hi!", "Hi there!"],
+         "responses": ["Hello!", "Hi!", "Hi there!", "Hey there!"],
          "context_set": ""
         },
         {"tag": "greeting_casual",
@@ -52,16 +52,38 @@
          "responses": ["You can call me Lil Bot.", "I'm Lil Bot!", "Call me Lil Bot will do."],
          "context_set": ""
         },
+        {"tag": "food_recommendation",
+         "patterns": ["I'd like to buy something to eat", "What's on the menu?", "What do you recommend?", "Could I get something to eat?",
+           "What's on the recommendation list?", "Any nice food?", "What to order?", "Any food recommendations?", "What is the best seller?",
+           "What's your favourite?", "What's highly recommended?", "What food do you guys sell?", "What's being sold?"],
+         "responses": ["We have Kimchi Fried Rice from Korean stall for RM7!", "Roti canai from Mamak stall is on the menu! Affordable Malaysian delicacies!",
+           "I recommend my favourite Nasi goreng kampung from Malay stall, tasty and filling!",
+           "Chicken Katsu Don from Japanese stall is highly recommended, one of our best sellers!"],
+         "context_set": ""
+        },
+        {"tag": "beverage_recommendation",
+         "patterns": ["I'd like to buy something to drink", "What's on the menu?", "What do you recommend?", "Could I get something to drink?",
+           "What's on the recommendation list?", "Any nice drinks?", "I need some refreshers", "What to order?", "Any beverage recommendations?",
+           "What is the best seller?", "What's your favourite?", "What's highly recommended?", "What drinks do you guys sell?", "What's being sold?"],
+         "responses": ["We have Milo ais from Mamak stall for RM2.50!", "Watermelon juice from Beverage stall is on the menu! Fresh and refreshing!",
+           "I recommend my all time favourite Iced Latte from Beverage stall, helps boost your day!",
+           "Limau panas from Mamak stall is highly recommended, one of our best sellers!"],
+         "context_set": ""
+        },
         {"tag": "stall",
-         "patterns": ["Id like to buy something", "whats on the menu", "what do you recommend?", "could i get something to eat"],
-         "responses": ["We sell chocolate chip cookies for $2!", "Cookies are on the menu!"],
+         "patterns": ["What stalls are available?", "What stalls do you guys have?", "Any nice stalls with nice food?",
+           "What are the stalls available?"],
+         "responses": ["We have Malay, Mamak, Beverage, Korean and Japanese, pick your fighter!",
+           "Our stalls include Malay, Mamak, Beverage, Korean and Japanese.", "We have stalls such as Malay, Mamak, Beverage, Korean and Japanese"],
          "context_set": ""
         },
         {"tag": "hours",
          "patterns": ["When are you guys open?", "What are your hours?", "Hours of operation", "Operating hours?", "Business hours?",
          "Do you guys have lunch break?", "Do you guys have break time?", "Do you guys rest?"],
-         "responses": ["We are open everyday 7am-11pm, including public holidays!"],
+         "responses": ["We are open everyday 7am-11pm, including public holidays!",
+           "We don't take breaks! Open everyday 7am-11pm, including public holidays!"],
          "context_set": ""
         }
+
    ]
 }
