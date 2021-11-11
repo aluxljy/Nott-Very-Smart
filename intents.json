@@ -13,7 +13,7 @@
         },
         {"tag": "greeting_question3",
          "patterns": ["Is anyone there?"],
-         "responses": ["Hello, how can I help you?", "I'm here at your service.", "Hi there, how can I help?"],
+         "responses": ["Hello there!", "I'm here!", "Hi there!", "I'm present!"],
          "context_set": ""
         },
         {"tag": "greeting_slang",
@@ -21,12 +21,15 @@
          "responses": ["Hello!", "Hi!", "Hi there!", "Hey there!"],
          "context_set": ""
         },
-        {"tag": "greeting_casual",
-         "patterns": ["Hi", "Hello", "Good day", "Hey", "Good morning", "Good afternoon", "Good evening", "Morning",
-           "Afternoon", "Evening", "Nice to see you", "It's great to see you", "Good to see you", "Long time no see",
+        {"tag": "greeting_casual1",
+         "patterns": ["Hi", "Hello", "Good day", "Hey", "Nice to see you", "It's great to see you", "Good to see you", "Long time no see",
            "It's been a while", "Hello stranger!"],
-         "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?", "Hello, how can I help you?",
-           "Hey there, how can I serve you?", "Great seeing you again!"],
+         "responses": ["Hello!", "Good to see you again!", "Hi there!", "Hey there!", "Nice seeing you again!", "Long time no see!"],
+         "context_set": ""
+        },
+        {"tag": "greeting_casual2",
+         "patterns": ["Good morning", "Good afternoon", "Good evening", "Morning", "Afternoon", "Evening"],
+         "responses": ["A good day to you."],
          "context_set": ""
         },
         {"tag": "greeting_formal",
@@ -56,7 +59,8 @@
          "patterns": ["I'd like to buy something to eat", "What's on the menu?", "What do you recommend?", "Could I get something to eat?",
            "What's on the recommendation list?", "Any nice food?", "What to order?", "Any food recommendations?", "What is the best seller?",
            "What's your favourite?", "What's highly recommended?", "What food do you guys sell?", "What's being sold?"],
-         "responses": ["We have Kimchi Fried Rice from Korean stall for RM7!", "Roti canai from Mamak stall is on the menu! Affordable Malaysian delicacies!",
+         "responses": ["We have Kimchi Fried Rice from Korean stall for RM7!",
+           "Roti canai from Mamak stall is on the menu! Affordable Malaysian delicacies!",
            "I recommend my favourite Nasi goreng kampung from Malay stall, tasty and filling!",
            "Chicken Katsu Don from Japanese stall is highly recommended, one of our best sellers!"],
          "context_set": ""
@@ -79,11 +83,54 @@
         },
         {"tag": "hours",
          "patterns": ["When are you guys open?", "What are your hours?", "Hours of operation", "Operating hours?", "Business hours?",
-         "Do you guys have lunch break?", "Do you guys have break time?", "Do you guys rest?"],
+           "Do you guys have lunch break?", "Do you guys have break time?", "Do you guys rest?"],
          "responses": ["We are open everyday 7am-11pm, including public holidays!",
            "We don't take breaks! Open everyday 7am-11pm, including public holidays!"],
          "context_set": ""
+        },
+        {"tag": "price",
+         "patterns": ["May I know roughly how the pricing is?", "Overall price", "How is the pricing?", "How are the prices?",
+         "Are the food sold expensive?", "Are the beverages sold expensive?", "Are the stuff sold expensive?",
+         "Are the food sold affordable?", "Are the beverages sold affordable?", "Are the stuff sold affordable?",
+         "Food price?", "Beverage price?", "Food expensive?", "Food affordable?", "Drinks expensive?", "Drinks affordable?"],
+         "responses": ["Honest opinion, the food and beverages are overall affordable.",
+           "I would say everything sold here are worth the price! You wouldn't regret it.",
+           "I'll just spit the facts, the food and beverages sold are priced from minimum RM0.40 to maximum RM10."],
+         "context_set": ""
+        },
+        {"tag": "menu",
+         "patterns": ["Can I have a look at your menu?", "Can you show me the menu?", "Are you able to show me the menu?",
+           "Menu?", "Menu please", "I would like to look at the menu", "Do you have the menu?", "Is there a menu?"],
+         "responses": ["Yes, of course! Let me show the menu to you.", "That wouldn't be a problem, allow me to show the menu to you."],
+         "context_set": ""
+        },
+        {"tag": "delivery",
+         "patterns": ["Do you guys provide delivery services?", "Is there any delivery services available?", "Delivery service?",
+           "Can you guys deliver my order?", "Can you guys deliver my food?", "Can you guys deliver my drink?", "May I ask for a delivery?"],
+         "responses": ["Yes, of course! However, not all food and beverages provide delivery services.",
+           "Sure, that wouldn't be a problem but some food and beverages do not provide delivery services."],
+         "context_set": ""
+        },
+        {"tag": "place_order",
+         "patterns": ["I would like to place my order", "Order please", "Order pls", "Can I place my order?", "I would like to place an order",
+           "Can I place an order?", "I would like to order something"],
+         "responses": ["Sure, I'm all ears!", "Alright, that wouldn't be a problem.", "Not a problem, please go ahead and do so.",
+           "Feel free to do so."],
+         "context_set": ""
+        },
+        {"tag": "confirm_order",
+         "patterns": ["I confirm the order", "I confirm my order", "Confirm order", "Confirm", "Yes, confirm",
+           "Yes, I do"],
+         "responses": ["Alright, your order is being processed, thank you for ordering from us!",
+           "Alright, I'll process your order accordingly. Thank you for ordering!",
+           "Ok, I got you. Processing your order now. Thank you for your order!"],
+         "context_set": ""
+        },
+        {"tag": "cancel_order",
+         "patterns": ["I would like to cancel my order", "Cancel order", "Can I cancel my order?", "I would like to cancel the order"],
+         "responses": ["Alright, I'll proceed with that :(", "Hate to see you go but I'll proceed with your request.",
+           "I regret to hear of your cancellation but I'll do as you wish.", "I'm sorry to hear you wish to go but I'll proceed with that."],
+         "context_set": ""
         }
-
    ]
 }
