@@ -13,6 +13,7 @@ request = request.split()  # split input to a list of words
 
 request_list = list()  # create new list to store non duplicated words
 for word in request:
+    word = ''.join(character for character in word if character.isalnum())  # remove special characters in word
     if word not in request_list:
         request_list.append(word)  # add word to new list if not duplicated
 
