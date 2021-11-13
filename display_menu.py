@@ -23,9 +23,9 @@ flag = 0  # flag to keep track of the overall passes in the loop
 for word in request_list:
     for stall in stalls:
         if word == stall:
-            menu = full_menu.loc[full_menu['stall_name'] == word]  # access the menu based on stall_name
-            menu = menu[['item_name', 'price', 'delivery_service']]  # display certain columns
-            #print("Bot: " + random.choice(responses))
+            menu = full_menu.loc[full_menu['stall_name'] == word]  # select certain rows by label stall_name
+            menu = menu[['item_name', 'price', 'delivery_service']]  # display certain columns only
+            # print("Bot: " + random.choice(responses))
             print("Bot: Here's the", word, "Stall's Menu.")
             print(menu.to_string(index=False))  # hide index of data frame
         else:
