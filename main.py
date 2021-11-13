@@ -14,6 +14,8 @@ from nltk.stem.lancaster import LancasterStemmer
 import json
 import numpy as np
 import random
+import display_menu
+import order
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
@@ -162,9 +164,29 @@ def chat():
             elif tag == "goodbye":
                 print("Bot: " + random.choice(responses))
                 break
+            elif tag == "menu":
+                display_menu.menu()
+                while True:
+                    yes = 'y'
+                    no = 'n'
+                    ans = input("Do you want to have a look at another menu?")
+                    ans = ans.lower()
+                    if yes in ans:
+                        display_menu.menu()
+                    else:
+                        ans = input("Do you want to order now? (Y/N)")
+                        ans = ans.lower()
+                        if yes in ans:
+                            order.place_order()
+                        else:
+                            print("Bot: How can I help you next?")
+                            break
+            elif tag == "place_order":
+                order.place_order()
             else:
                 print("Bot: " + random.choice(responses))
         else:
             print("Bot: I don't understand.. can you rephrase your word :(")
+
 
 chat()
