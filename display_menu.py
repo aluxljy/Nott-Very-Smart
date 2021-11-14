@@ -4,7 +4,7 @@ import string
 pd.set_option("display.max_rows", None, "display.max_columns", None)  # maximize number of rows and columns displayed
 pd.options.display.float_format = '{:,.2f}'.format  # format floating decimal point to 2 places
 food_list = pd.read_excel(
-    r'C:\Users\User\Desktop\Qian Hui\Nott-A-Code\Food List.xlsx')  # import excel file using pandas
+    r'Food List.xlsx')  # import excel file using pandas
 full_menu = pd.DataFrame(food_list)  # construct data frame for menu
 
 
@@ -39,3 +39,5 @@ def menu():
         print(
             "Bot: Not sure which menu you wish to view but here's everything that's available on our cafeteria's Menu.")
         print(full_menu.to_string(index=False))  # hide index of data frame
+
+menu()

@@ -4,7 +4,7 @@ import random
 
 pd.set_option("display.max_rows", None, "display.max_columns", None)  # maximize number of rows and columns displayed
 pd.options.display.float_format = '{:,.2f}'.format  # format floating decimal point to 2 places
-food_list = pd.read_excel(r'C:\Users\M.I.C.H.E.L.L.E\Downloads\Food List.xlsx')  # import excel file using pandas
+food_list = pd.read_excel(r'Food List.xlsx')  # import excel file using pandas
 full_menu = pd.DataFrame(food_list)  # construct data frame for menu
 
 inp = input("You: ")
@@ -37,7 +37,7 @@ for word in request_list:
                     item_price = recommendation['price'].to_string(index=False, header=False)  # hide index and header of data frame
                     item_delivery = recommendation['delivery_service'].to_string(index=False, header=False)  # hide index and header of data frame
                     print("Bot: For the " + word + " Stall, I recommend " + item + " which costs RM" + item_price + ".")
-                    print("Bot: Delivery service status: " + item_delivery + ".")
+                    print("Bot: Delivery service status -> " + item_delivery + ".")
 
                 except KeyError:
                     print("Bot: Sorry, the", word, "Stall doesn't sell beverages :(")
@@ -51,7 +51,7 @@ for word in request_list:
                     item_price = recommendation['price'].to_string(index=False, header=False)  # hide index and header of data frame
                     item_delivery = recommendation['delivery_service'].to_string(index=False, header=False)  # hide index and header of data frame
                     print("Bot: For the " + word + " Stall, I recommend " + item + " which costs RM" + item_price + ".")
-                    print("Bot: Delivery service status: " + item_delivery + ".")
+                    print("Bot: Delivery service status -> " + item_delivery + ".")
 
                 except KeyError:
                     print("Bot: Sorry, the", word, "Stall doesn't sell food :(")
