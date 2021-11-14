@@ -67,3 +67,4 @@ if flag == (len(request_list) * len(stalls)):
     print(available_stalls.to_string(index=False))  # hide index of data frame
 
 
+
