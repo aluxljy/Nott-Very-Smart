@@ -16,6 +16,7 @@ import numpy as np
 import random
 import display_menu
 import order
+import quit
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
@@ -144,9 +145,11 @@ def chat():
     print("You can always type quit to stop!")
     while True:
         inp = input("You: ")
-        if inp.lower() == "quit":
-            print("Bot: Bye! See you next time :)")
-            break
+        # if inp.lower() == "quit":
+        #     print("Bot: Bye! See you next time :)")
+        #     break
+
+        quit.quit_system(inp)
 
         results = model.predict([bag_of_words(inp, root_words)])[0]
         results_index = np.argmax(results)
@@ -168,21 +171,25 @@ def chat():
                 display_menu.menu()
                 while True:
                     yes = 'y'
-                    no = 'n'
-                    ans = input("Do you want to have a look at another menu?")
+                    ans = input("Do you want to have a look at another menu? ")
                     ans = ans.lower()
+                    quit.quit_system(ans)
                     if yes in ans:
                         display_menu.menu()
                     else:
-                        ans = input("Do you want to order now? (Y/N)")
+                        ans = input("Do you want to order now? (Y/N) ")
                         ans = ans.lower()
+                        quit.quit_system(ans)
                         if yes in ans:
-                            order.place_order()
+                            complete_order = list()
+                            order.place_order(complete_order)
+                            break
                         else:
-                            print("Bot: How can I help you next?")
+                            print("Bot: How can I help you next? ")
                             break
             elif tag == "place_order":
-                order.place_order()
+                complete_order = list()
+                order.place_order(complete_order)
             else:
                 print("Bot: " + random.choice(responses))
         else:

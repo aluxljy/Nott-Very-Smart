@@ -1,5 +1,6 @@
 import pandas as pd
 import string
+import quit
 
 pd.set_option("display.max_rows", None, "display.max_columns", None)  # maximize number of rows and columns displayed
 pd.options.display.float_format = '{:,.2f}'.format  # format floating decimal point to 2 places
@@ -11,6 +12,7 @@ full_menu = pd.DataFrame(food_list)  # construct data frame for menu
 def menu():
     print("Bot: Which menu?")
     inp = input("You: ")
+    quit.quit_system(inp)
 
     request = string.capwords(str.lower(inp))  # convert input to lowercase then capitalize first letter of each word
     request = request.split()  # split input to a list of words
@@ -40,5 +42,5 @@ def menu():
             "Bot: Not sure which menu you wish to view but here's everything that's available on our cafeteria's Menu.")
         print(full_menu.to_string(index=False))  # hide index of data frame
 
-menu()
+# menu()
 

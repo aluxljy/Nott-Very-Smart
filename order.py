@@ -1,10 +1,9 @@
 import pandas as pd
-import string
+import quit
 
 pd.set_option("display.max_rows", None, "display.max_columns", None)  # maximize number of rows and columns displayed
 pd.options.display.float_format = '{:,.2f}'.format  # format floating decimal point to 2 places
-food_list = pd.read_excel(
-    r'C:\Users\User\Desktop\Qian Hui\Nott-A-Code\Food List 2.xlsx')  # import excel file using pandas
+food_list = pd.read_excel(r'Food List.xlsx')  # import excel file using pandas
 full_menu = pd.DataFrame(food_list)  # construct data frame for menu
 complete_order = list()
 
@@ -12,6 +11,7 @@ complete_order = list()
 def place_order(complete_order):
     print("Bot: Please enter the name of food or beverage you would like to order.")
     inp = input("You: ")
+    quit.quit_system(inp)
 
     request = str.lower(inp)
 
@@ -32,24 +32,25 @@ def place_order(complete_order):
             # print(complete_order)
             order_list = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
             order_list = order_list[['item_name', 'price', 'delivery_service']]  # display certain columns only
-            print("Here is your order: ")
+            print("Bot: Here is your order: ")
             print(order_list.to_string(index=False))
             if not confirm_order():
                 if not cancel_order():
-                    print("Here is your order:")
+                    print("Bot: Here is your order:")
                     print(order_list.to_string(index=False))
                 else:
                     complete_order.pop()
             yes = 'y'
-            ans = input("Do you want to make another order? (Y/N) ")
+            ans = input("Bot: Do you want to make another order? (Y/N) ")
             ans = ans.lower()
+            quit.quit_system(ans)
             if yes in ans:
                 place_order(complete_order)
             else:
                 i = 0
                 if len(complete_order) != 0:
                     delivery_service(complete_order)
-                    print("Here is your receipt: ")
+                    print("Bot: Here is your receipt: ")
                     for item_name in complete_order:
                         order_list = full_menu.loc[full_menu['item_name'].str.lower() == item_name.lower()]
                         order_list = order_list[['item_name', 'price', 'delivery_service']]
@@ -71,8 +72,9 @@ def place_order(complete_order):
 
 
 def confirm_order():
-    confirm = input("Confirm? (Y/N) ")
+    confirm = input("Bot: Confirm? (Y/N) ")
     confirm = confirm.lower()
+    quit.quit_system(confirm)
     if 'y' in confirm:
         return True
     else:
@@ -80,13 +82,13 @@ def confirm_order():
 
 
 def cancel_order():
-    cancel = input("Are you sure you want to cancel this order? (Y/N) ")
+    cancel = input("Bot: Are you sure you want to cancel this order? (Y/N) ")
     cancel = cancel.lower()
+    quit.quit_system(cancel)
     if 'y' or 'Y' in cancel:
         return True
     else:
         return False
-
 
 
 def calculate_price(complete_order):
