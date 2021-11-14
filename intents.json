@@ -80,7 +80,7 @@
         },
         {"tag": "hours",
          "patterns": ["When are you guys open?", "What are your hours?", "Hours of operation", "Operating hours?", "Business hours?",
-           "Do you guys have lunch break?", "Do you guys have break time?", "Do you guys rest?", "open", "hours", "operation"],
+           "Do you guys have lunch break?", "Do you guys have break time?", "Do you guys rest?", "open", "hours", "operation", "rest", "break"],
          "responses": ["We are open everyday 7am-11pm, including public holidays!",
            "We don't take breaks! Open everyday 7am-11pm, including public holidays!"],
          "context_set": ""
