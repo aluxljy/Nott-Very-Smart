@@ -6,7 +6,7 @@ def words(text):
     return re.findall(r'\w+', text.lower())
 
 
-WORDS = Counter(words(open('').read()))
+WORDS = Counter(words(open('test.txt').read()))
 
 
 def probability(word, n=sum(WORDS.values())):
