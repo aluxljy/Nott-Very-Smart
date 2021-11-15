@@ -7,7 +7,7 @@ import read_excel as r
 full_menu = r.display_menu()
 
 
-def recommend():
+def recommend(is_beverage):
     inp = input("You: ")
     check_quit.quit_system(inp)
 
@@ -23,7 +23,7 @@ def recommend():
     stalls = ['Malay', 'Mamak', 'Beverage', 'Korean', 'Japanese']
     flag = 0  # flag to keep track of the overall passes in the loop
 
-    is_beverage = "no"
+    # is_beverage = "no"
 
     for word in request_list:
         for stall in stalls:
@@ -42,8 +42,7 @@ def recommend():
                                                                        header=False)  # hide index and header of data frame
                         item_delivery = recommendation['delivery_service'].to_string(index=False,
                                                                                      header=False)  # hide index and header of data frame
-                        print(
-                            "Bot: For the " + word + " Stall, I recommend " + item + " which costs RM" + item_price + ".")
+                        print("Bot: For the " + word + " Stall, I recommend " + item + " which costs RM" + item_price + ".")
                         print("Bot: Delivery service status -> " + item_delivery + ".")
 
                     except KeyError:
@@ -61,8 +60,7 @@ def recommend():
                                                                        header=False)  # hide index and header of data frame
                         item_delivery = recommendation['delivery_service'].to_string(index=False,
                                                                                      header=False)  # hide index and header of data frame
-                        print(
-                            "Bot: For the " + word + " Stall, I recommend " + item + " which costs RM" + item_price + ".")
+                        print("Bot: For the " + word + " Stall, I recommend " + item + " which costs RM" + item_price + ".")
                         print("Bot: Delivery service status -> " + item_delivery + ".")
 
                     except KeyError:

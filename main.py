@@ -145,7 +145,7 @@ def bag_of_words(s, root_words):
 def chat():
     print("Welcome to Uni Cafeteria Food Ordering System!")
     print("You can always type quit to stop!")
-    print("Bot: How can I help you? ")
+    print("\nBot: How can I help you? ")
     while True:
         inp = input("You: ")
         # if inp.lower() == "quit":
@@ -174,13 +174,15 @@ def chat():
                 display_menu.menu()
                 while True:
                     yes = 'y'
-                    ans = input("Do you want to have a look at another menu? (Y/N) ")
+                    print("Bot: Do you want to have a look at another menu? (Y/N) ")
+                    ans = input("You: ")
                     ans = ans.lower()
                     check_quit.quit_system(ans)
                     if yes in ans:
                         display_menu.menu()
                     else:
-                        ans = input("Do you want to order now? (Y/N) ")
+                        print("Bot: Do you want to order now? (Y/N) ")
+                        ans = input("You: ")
                         ans = ans.lower()
                         check_quit.quit_system(ans)
                         if yes in ans:
@@ -194,14 +196,28 @@ def chat():
                 complete_order = list()
                 order.place_order(complete_order)
                 quit()
-            elif tag in ["food_recommendation", "beverage_recommendation"]:
+            elif tag == "food_recommendation":
                 print("Bot: " + random.choice(responses))
-                inp = input("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
+                print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
+                inp = input("You: ")
                 inp = inp.lower()
                 check_quit.quit_system(inp)
                 if 'y' in inp:
                     print("Bot: Which stall? ")
-                    recommendation.recommend()
+                    recommendation.recommend("no")
+                    print("Bot: How can I help you next? ")
+                else:
+                    print("Bot: How can I help you next? ")
+            elif tag == "beverage_recommendation":
+                print("Bot: " + random.choice(responses))
+                print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
+                inp = input("You: ")
+                inp = inp.lower()
+                check_quit.quit_system(inp)
+                if 'y' in inp:
+                    print("Bot: Which stall? ")
+                    recommendation.recommend("yes")
+                    print("Bot: How can I help you next? ")
                 else:
                     print("Bot: How can I help you next? ")
             elif tag == 'details':

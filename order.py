@@ -42,7 +42,8 @@ def place_order(complete_order):
                 else:
                     complete_order.pop()
             yes = 'y'
-            ans = input("Bot: Do you want to make another order? (Y/N) ")
+            print("Bot: Do you want to make another order? (Y/N) ")
+            ans = input("You: ")
             ans = ans.lower()
             check_quit.quit_system(ans)
             if yes in ans:
@@ -73,7 +74,8 @@ def place_order(complete_order):
 
 
 def confirm_order():
-    confirm = input("Bot: Confirm? (Y/N) ")
+    print("Bot: Confirm? (Y/N) ")
+    confirm = input("You: ")
     confirm = confirm.lower()
     check_quit.quit_system(confirm)
     if 'y' in confirm:
@@ -83,7 +85,8 @@ def confirm_order():
 
 
 def cancel_order():
-    cancel = input("Bot: Are you sure you want to cancel this order? (Y/N) ")
+    print("Bot: Are you sure you want to cancel this order? (Y/N) ")
+    cancel = input("You: ")
     cancel = cancel.lower()
     check_quit.quit_system(cancel)
     if 'y' or 'Y' in cancel:
