@@ -171,7 +171,7 @@ def chat():
                 print("Bot: " + random.choice(responses))
                 break
             elif tag == "menu":
-                display_menu.menu()
+                display_menu.show_menu()
                 while True:
                     yes = 'y'
                     print("Bot: Do you want to have a look at another menu? (Y/N) ")
@@ -179,7 +179,7 @@ def chat():
                     ans = ans.lower()
                     check_quit.quit_system(ans)
                     if yes in ans:
-                        display_menu.menu()
+                        display_menu.show_menu()
                     else:
                         print("Bot: Do you want to order now? (Y/N) ")
                         ans = input("You: ")

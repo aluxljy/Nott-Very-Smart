@@ -2,23 +2,16 @@ import string
 import random
 import check_quit
 
-import read_excel as r
+import functions as f
 
-full_menu = r.display_menu()
+full_menu = f.display_menu()
 
 
 def recommend(is_beverage):
     inp = input("You: ")
     check_quit.quit_system(inp)
 
-    request = string.capwords(str.lower(inp))  # convert input to lowercase then capitalize first letter of each word
-    request = request.split()  # split input to a list of words
-
-    request_list = list()  # create new list to store non duplicated words
-    for word in request:
-        word = ''.join(character for character in word if character.isalnum())  # remove special characters in word
-        if word not in request_list:
-            request_list.append(word)  # add word to new list if not duplicated
+    request_list = f.clean_input(inp)
 
     stalls = ['Malay', 'Mamak', 'Beverage', 'Korean', 'Japanese']
     flag = 0  # flag to keep track of the overall passes in the loop

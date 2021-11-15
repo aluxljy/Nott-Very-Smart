@@ -1,7 +1,7 @@
 import check_quit
-import read_excel as r
+import functions as f
 
-full_menu = r.display_menu()
+full_menu = f.display_menu()
 complete_order = list()
 
 
