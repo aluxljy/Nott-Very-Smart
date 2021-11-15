@@ -16,7 +16,9 @@ import numpy as np
 import random
 import display_menu
 import order
-import quit
+import check_quit
+import recommendation
+import information
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
@@ -143,13 +145,14 @@ def bag_of_words(s, root_words):
 def chat():
     print("Welcome to Uni Cafeteria Food Ordering System!")
     print("You can always type quit to stop!")
+    print("Bot: How can I help you? ")
     while True:
         inp = input("You: ")
         # if inp.lower() == "quit":
         #     print("Bot: Bye! See you next time :)")
         #     break
 
-        quit.quit_system(inp)
+        check_quit.quit_system(inp)
 
         results = model.predict([bag_of_words(inp, root_words)])[0]
         results_index = np.argmax(results)
@@ -171,25 +174,39 @@ def chat():
                 display_menu.menu()
                 while True:
                     yes = 'y'
-                    ans = input("Do you want to have a look at another menu? ")
+                    ans = input("Do you want to have a look at another menu? (Y/N) ")
                     ans = ans.lower()
-                    quit.quit_system(ans)
+                    check_quit.quit_system(ans)
                     if yes in ans:
                         display_menu.menu()
                     else:
                         ans = input("Do you want to order now? (Y/N) ")
                         ans = ans.lower()
-                        quit.quit_system(ans)
+                        check_quit.quit_system(ans)
                         if yes in ans:
                             complete_order = list()
                             order.place_order(complete_order)
-                            break
+                            quit()
                         else:
                             print("Bot: How can I help you next? ")
                             break
             elif tag == "place_order":
                 complete_order = list()
                 order.place_order(complete_order)
+                quit()
+            elif tag in ["food_recommendation", "beverage_recommendation"]:
+                print("Bot: " + random.choice(responses))
+                inp = input("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
+                inp = inp.lower()
+                check_quit.quit_system(inp)
+                if 'y' in inp:
+                    print("Bot: Which stall? ")
+                    recommendation.recommend()
+                else:
+                    print("Bot: How can I help you next? ")
+            elif tag == 'details':
+                information.info(inp)
+                print("Bot: How can I help you next? ")
             else:
                 print("Bot: " + random.choice(responses))
         else:

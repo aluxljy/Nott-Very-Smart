@@ -118,6 +118,11 @@
          "responses": ["Sure, I'm all ears!", "Alright, that wouldn't be a problem.", "Not a problem, please go ahead and do so.",
            "Feel free to do so."],
          "context_set": ""
+        },
+        {"tag": "details",
+         "patterns": ["detail of", "information of", "know more about", "want details of", "want information of"],
+         "responses": "",
+         "context_set": ""
         }
    ]
 }

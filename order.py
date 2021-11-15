@@ -1,17 +1,14 @@
-import pandas as pd
-import quit
+import check_quit
+import read_excel as r
 
-pd.set_option("display.max_rows", None, "display.max_columns", None)  # maximize number of rows and columns displayed
-pd.options.display.float_format = '{:,.2f}'.format  # format floating decimal point to 2 places
-food_list = pd.read_excel(r'Food List.xlsx')  # import excel file using pandas
-full_menu = pd.DataFrame(food_list)  # construct data frame for menu
+full_menu = r.display_menu()
 complete_order = list()
 
 
 def place_order(complete_order):
     print("Bot: Please enter the name of food or beverage you would like to order.")
     inp = input("You: ")
-    quit.quit_system(inp)
+    check_quit.quit_system(inp)
 
     request = str.lower(inp)
 
@@ -26,9 +23,13 @@ def place_order(complete_order):
     # print(request)
 
     for item in items_list:
+        if item.lower() == 'kimchi' and request.lower() == "kimchi fried rice":
+            continue
         if item in request:
             order_name = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
             complete_order.append(order_name['item_name'].to_string(index=False, header=False))
+            # print(item)
+            # print(request)
             # print(complete_order)
             order_list = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
             order_list = order_list[['item_name', 'price', 'delivery_service']]  # display certain columns only
@@ -43,7 +44,7 @@ def place_order(complete_order):
             yes = 'y'
             ans = input("Bot: Do you want to make another order? (Y/N) ")
             ans = ans.lower()
-            quit.quit_system(ans)
+            check_quit.quit_system(ans)
             if yes in ans:
                 place_order(complete_order)
             else:
@@ -74,7 +75,7 @@ def place_order(complete_order):
 def confirm_order():
     confirm = input("Bot: Confirm? (Y/N) ")
     confirm = confirm.lower()
-    quit.quit_system(confirm)
+    check_quit.quit_system(confirm)
     if 'y' in confirm:
         return True
     else:
@@ -84,7 +85,7 @@ def confirm_order():
 def cancel_order():
     cancel = input("Bot: Are you sure you want to cancel this order? (Y/N) ")
     cancel = cancel.lower()
-    quit.quit_system(cancel)
+    check_quit.quit_system(cancel)
     if 'y' or 'Y' in cancel:
         return True
     else:
@@ -113,8 +114,8 @@ def delivery_service(complete_order):
         if delivery == 'yes':
             number += 1
     if number == len(complete_order):
-        print("Bot: Delivery Service can be done!")
+        print("\nBot: Delivery Service can be done!")
     else:
-        print("Bot: Please come and collect ur food at uni cafeteria in 20 minutes!")
+        print("\nBot: Please come and collect ur food at uni cafeteria in 20 minutes!")
 
 # place_order(complete_order)
