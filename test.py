@@ -1,24 +1,39 @@
-import pandas as pd
+import re
+from collections import Counter
 
-pd.set_option("display.max_rows", None, "display.max_columns", None)  # maximize number of rows and columns displayed
-pd.options.display.float_format = '{:,.2f}'.format  # format floating decimal point to 2 places
-food_list = pd.read_excel(r'Food List.xlsx')  # import excel file using pandas
-full_menu = pd.DataFrame(food_list)  # construct data frame for menu
+
+def words(text):
+    return re.findall(r'\w+', text.lower())
+
+
+WORDS = Counter(words(open('').read()))
+
+
+def probability(word, n=sum(WORDS.values())):
+    return WORDS[word] / n
+
+
+def correction(word):
+    return max(candidates(word), key=probability)
+
+
+def candidates(word):
+    return (known([word]) or known(edits1(word)) or [word])
+
+
+def known(words):
+    return set(w for w in words if w in WORDS)
+
+
+def edits1(word):
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+    splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
+    deletes = [L + R[1:] for L, R in splits if R]
+    transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R) > 1]
+    replaces = [L + c + R[1:] for L, R in splits if R for c in letters]
+    inserts = [L + c + R for L, R in splits for c in letters]
+    return set(deletes + transposes + replaces + inserts)
+
 
 inp = input("You: ")
-
-request = str.lower(inp)
-
-items = full_menu['item_name'].values.tolist()
-lower_items = list()
-
-for item in items:
-    lower_items.append(item.lower())
-
-for lower_item in lower_items:
-    if lower_item in inp:
-        detail = full_menu.loc[full_menu['item_name'].str.lower() == lower_item]
-        detail = detail[['stall_name', 'item_name', 'price', 'delivery_service']]
-        print(detail.to_string(index=False))
-
-
+print(correction(inp))
