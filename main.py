@@ -19,16 +19,22 @@ import order
 import check_quit
 import recommendation
 import information
+import pickle
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
 nltk.download('wordnet')
 
-# from keras.models import Sequential
-# from keras.layers import Dense, Activation, Dropout
-# from keras.optimizers import SGD
-# import pickle
+#########################
+# Get data from intents #
+#########################
+with open('intents.json') as file1:
+    data = json.load(file1)
 
+# try:
+#     with open("data.pickle", "rb") as file2:
+#         words, tags_name, training, output = pickle.load(file2)
+# except:
 ######################
 # Create empty lists #
 ######################
@@ -39,12 +45,6 @@ tags_of_patterns = []  # holds the tag name of the pattern
 root_words = []  # holds all the root words
 training = []  # holds training data
 output = []  # holds output data
-
-#########################
-# Get data from intents #
-#########################
-with open('intents.json') as file1:
-    data = json.load(file1)
 
 for intent in data['intents']:
     tags_name.append(intent['tag'])  # insert all the tags name into tags_name[]
@@ -64,18 +64,6 @@ for w in words:
         root_words.append(stemmer.stem(w.lower()))
 
 root_words = sorted(set(root_words))
-
-
-###############################
-# Check the data in the lists #
-###############################
-def printdata():
-    print(words)
-    print(tags_name)
-    print(patterns)
-    print(tags_of_patterns)
-    print(root_words)
-
 
 #############################
 # Create bag of words model #
@@ -103,6 +91,9 @@ for index, details in enumerate(patterns):
 training = np.array(training)
 output = np.array(output)
 
+# with open("data.pickle", "wb") as file2:
+#     pickle.dump((words, tags_name, training, output), file2)
+
 ####################################################
 # Convert training data and output to numpy arrays #
 ####################################################
@@ -116,8 +107,23 @@ net = tflearn.regression(net)
 
 model = tflearn.DNN(net)
 
-model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-model.save("model.tflearn")
+try:
+    model.load("model.tflearn")
+except:
+    model = tflearn.DNN(net)
+    model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+    model.save("model.tflearn")
+
+
+###############################
+# Check the data in the lists #
+###############################
+def printdata():
+    print(words)
+    print(tags_name)
+    print(patterns)
+    print(tags_of_patterns)
+    print(root_words)
 
 
 # printdata()
@@ -148,9 +154,6 @@ def chat():
     print("\nBot: How can I help you? ")
     while True:
         inp = input("You: ")
-        # if inp.lower() == "quit":
-        #     print("Bot: Bye! See you next time :)")
-        #     break
 
         check_quit.quit_system(inp)
 

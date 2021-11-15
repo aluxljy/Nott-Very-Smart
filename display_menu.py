@@ -1,4 +1,3 @@
-import string
 import check_quit
 import functions as f
 
