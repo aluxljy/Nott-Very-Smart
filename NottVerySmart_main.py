@@ -1,5 +1,5 @@
 # Group Name: Nott-Very-Smart
-# Author: Looi Jie Ying, Liew Qian Hui
+# Authors: Looi Jie Ying, Liew Qian Hui
 # Project Name: Food Ordering Chatbot
 # Date: 10/11/2021
 
@@ -30,10 +30,6 @@ nltk.download('wordnet')
 with open('NottVerySmart_intents.json') as file1:
     data = json.load(file1)
 
-# try:
-#     with open("data.pickle", "rb") as file2:
-#         words, tags_name, training, output = pickle.load(file2)
-# except:
 ######################
 # Create empty lists #
 ######################
@@ -90,9 +86,6 @@ for index, details in enumerate(patterns):
 training = np.array(training)
 output = np.array(output)
 
-# with open("data.pickle", "wb") as file2:
-#     pickle.dump((words, tags_name, training, output), file2)
-
 ####################################################
 # Convert training data and output to numpy arrays #
 ####################################################
@@ -124,12 +117,11 @@ def printdata():
     print(tags_of_patterns)
     print(root_words)
 
-
-# printdata()
-
 ########################
 # Bag of word function #
 ########################
+
+
 def bag_of_words(s, root_words):
     bag = [0 for _ in range(len(root_words))]
 
@@ -165,68 +157,70 @@ def chat():
                 if tg['tag'] == tag:
                     responses = tg['responses']
 
+            # print responses based on the respective tag the user input falls in
             if tag in ["greeting_question1", "greeting_question2", "greeting_question3", "greeting_slang",
                        "greeting_casual1", "greeting_casual2", "greeting_formal"]:
-                print("Bot: " + random.choice(responses))
+                print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: How can I help you?")
+                print("Bot: You can ask for recommendations, request for the menu, place orders and ask queries.")
             elif tag == "goodbye":
-                print("Bot: " + random.choice(responses))
+                print("Bot: " + random.choice(responses))  # print random responses
                 break
             elif tag == "menu":
-                display_menu.show_menu()
+                display_menu.show_menu()  # print full menu
                 while True:
                     yes = 'y'
-                    print("Bot: Do you want to have a look at another menu? (Y/N) ")
+                    print("Bot: Do you want to have a look at a specific stall's menu? (Y/N) ")
                     ans = input("You: ")
-                    ans = ans.lower()
-                    check_quit.quit_system(ans)
+                    ans = ans.lower()  # convert to lowercase
+                    check_quit.quit_system(ans)  # check for the word "quit"
                     if yes in ans:
-                        display_menu.show_menu()
+                        display_menu.show_menu()  # print respective menu based on user input
                     else:
                         print("Bot: Do you want to order now? (Y/N) ")
                         ans = input("You: ")
-                        ans = ans.lower()
-                        check_quit.quit_system(ans)
+                        ans = ans.lower()  # convert to lowercase
+                        check_quit.quit_system(ans)  # check for the word "quit"
                         if yes in ans:
-                            complete_order = list()
-                            order.place_order(complete_order)
+                            complete_order = list()  # create new list
+                            order.place_order(complete_order)  # place order and print receipt
                             quit()
                         else:
                             print("Bot: How can I help you next? ")
                             break
             elif tag == "place_order":
-                complete_order = list()
-                order.place_order(complete_order)
+                complete_order = list()  # create new list
+                order.place_order(complete_order)  # place order and print receipt
                 quit()
             elif tag == "food_recommendation":
-                print("Bot: " + random.choice(responses))
+                print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
                 inp = input("You: ")
-                inp = inp.lower()
-                check_quit.quit_system(inp)
+                inp = inp.lower()  # convert to lowercase
+                check_quit.quit_system(inp)  # check for the word "quit"
                 if 'y' in inp:
-                    print("Bot: Which stall? ")
-                    recommendation.recommend("no")
+                    print("Bot: Which stall would you wish the recommendation to be based on? ")
+                    recommendation.recommend("no")  # recommendation based on food
                     print("Bot: How can I help you next? ")
                 else:
                     print("Bot: How can I help you next? ")
             elif tag == "beverage_recommendation":
-                print("Bot: " + random.choice(responses))
+                print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
                 inp = input("You: ")
-                inp = inp.lower()
-                check_quit.quit_system(inp)
+                inp = inp.lower()  # convert to lowercase
+                check_quit.quit_system(inp)  # check for the word "quit"
                 if 'y' in inp:
-                    print("Bot: Which stall? ")
-                    recommendation.recommend("yes")
+                    print("Bot: Which stall would you wish the recommendation to be based on? ")
+                    recommendation.recommend("yes")  # recommendation based on beverage
                     print("Bot: How can I help you next? ")
                 else:
                     print("Bot: How can I help you next? ")
             elif tag == 'details':
-                information.info(inp)
+                information.info(inp)  # print item details based on user input
                 print("Bot: How can I help you next? ")
             else:
-                print("Bot: " + random.choice(responses))
+                print("Bot: " + random.choice(responses))  # print random responses
         else:
             print("Bot: I don't understand.. can you rephrase your word :(")
 

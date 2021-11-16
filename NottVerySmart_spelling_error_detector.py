@@ -38,14 +38,10 @@ def edits1(word):
     return set(deletes + transposes + replaces + inserts)
 
 
-inp = input("You: ")
-request_list = f.clean_input(inp)
 
-for request in request_list:
-    if correction(request) != request:
-        for wl in word_list:
-            if correction(request) == wl:
-                print("Bots: Instead of " + request + " did you mean " + wl + "?")
+
+
+
 
 
 

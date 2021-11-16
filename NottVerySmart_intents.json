@@ -1,7 +1,7 @@
 {"intents": [
         {"tag": "greeting_question1",
          "patterns": ["How are you?", "How's your day?", "How do you do?", "How have you been?", "How are you doing?",
-           "How is it going?", "Are you OK?", "Alright, mate?", "You alright?"],
+           "How is it going?"],
          "responses": ["Hello there, I'm doing great!", "Hello there, I'm feeling good!", "Been doing fine, thanks for asking!",
            "I'm all good."],
          "context_set": ""
@@ -12,7 +12,7 @@
          "context_set": ""
         },
         {"tag": "greeting_question3",
-         "patterns": ["Is anyone there?"],
+         "patterns": ["Is anyone there?", "anyone there", "you there"],
          "responses": ["Hello there!", "I'm here!", "Hi there!", "I'm present!"],
          "context_set": ""
         },
@@ -89,7 +89,8 @@
          "patterns": ["May I know roughly how the pricing is?", "Overall price", "How is the pricing?", "How are the prices?",
          "Are the food sold expensive?", "Are the beverages sold expensive?", "Are the stuff sold expensive?",
          "Are the food sold affordable?", "Are the beverages sold affordable?", "Are the stuff sold affordable?",
-         "Food price?", "Beverage price?", "Food expensive?", "Food affordable?", "Drinks expensive?", "Drinks affordable?", "price"],
+         "Food price?", "Beverage price?", "Food expensive?", "Food affordable?", "Drinks expensive?", "Drinks affordable?", "price",
+         "overall price"],
          "responses": ["Honest opinion, the food and beverages are overall affordable.",
            "I would say everything sold here are worth the price! You wouldn't regret it.",
            "I'll just spit the facts, the food and beverages sold are priced from minimum RM0.40 to maximum RM10."],
@@ -98,7 +99,7 @@
         {"tag": "menu",
          "patterns": ["Can I have a look at your menu?", "Can you show me the menu?", "Are you able to show me the menu?",
            "Menu?", "Menu please", "I would like to look at the menu", "Do you have the menu?", "Is there a menu?", "show menu",
-           "see menu", "have a look at menu"],
+           "see menu", "have a look at menu", "view menu", "request menu", "request for menu"],
          "responses": ["Yes, of course! Let me show the menu to you.", "That wouldn't be a problem, allow me to show the menu to you."],
          "context_set": ""
         },
@@ -120,9 +121,14 @@
          "context_set": ""
         },
         {"tag": "details",
-         "patterns": ["detail of", "information of", "know more about", "want details of", "want information of"],
+         "patterns": ["detail of", "information of", "know more about", "want details of", "want information of", "detail"],
          "responses": "",
          "context_set": ""
+        },
+        {"tag": "others",
+         "patterns": ["ok", "sure", "oh", "help", "how to continue", "stuck", "what should I do", "er", "sos"],
+         "responses": ["You can continue by trying to type words such as recommendation, menu, stalls, hours, overall price or delivery service."],
+         "context_set": ""
         }
-   ]
+]
 }

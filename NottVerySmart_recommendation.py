@@ -1,7 +1,7 @@
 import random
 import NottVerySmart_check_quit as check_quit
-
 import NottVerySmart_functions as f
+import NottVerySmart_spelling_error_detector as error_detector
 
 full_menu = f.display_menu()
 
@@ -12,10 +12,26 @@ def recommend(is_beverage):
 
     request_list = f.clean_input(inp)
 
+    corrected = list()
+
+    for request in request_list:
+        if error_detector.correction(request) != request:
+            for wl in error_detector.word_list:
+                if error_detector.correction(request) == wl:
+                    yes = 'y'
+                    print("Bot: Instead of " + request + " did you mean " + wl + "? (Y/N)")
+                    ans = input("You: ")
+                    ans = ans.lower()  # convert to lowercase
+                    check_quit.quit_system(ans)  # check for the word "quit"
+                    if yes in ans:
+                        corrected.append(error_detector.correction(request))
+                    else:
+                        corrected.append(" ")
+
+    request_list.extend(corrected)
+
     stalls = ['Malay', 'Mamak', 'Beverage', 'Korean', 'Japanese']
     flag = 0  # flag to keep track of the overall passes in the loop
-
-    # is_beverage = "no"
 
     for word in request_list:
         for stall in stalls:
@@ -68,3 +84,5 @@ def recommend(is_beverage):
         print("Bot: Or rather, have a look at the stalls available in our cafeteria.")
         print(available_stalls.to_string(index=False))  # hide index of data frame
 
+
+recommend("no")

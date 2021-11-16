@@ -6,7 +6,7 @@ complete_order = list()
 
 
 def place_order(complete_order):
-    print("Bot: Please enter the name of food or beverage you would like to order.")
+    print("Bot: Please enter the name of the food or beverage you would like to order.")
     inp = input("You: ")
     check_quit.quit_system(inp)
 
@@ -19,18 +19,13 @@ def place_order(complete_order):
         items_list.append(item.lower())
     flag = 0  # flag to keep track of the overall passes in the loop
 
-    # print(items_list)
-    # print(request)
-
     for item in items_list:
         if item.lower() == 'kimchi' and request.lower() == "kimchi fried rice":
             continue
         if item in request:
             order_name = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
             complete_order.append(order_name['item_name'].to_string(index=False, header=False))
-            # print(item)
-            # print(request)
-            # print(complete_order)
+
             order_list = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
             order_list = order_list[['item_name', 'price', 'delivery_service']]  # display certain columns only
             print("Bot: Here is your order: ")
@@ -63,13 +58,13 @@ def place_order(complete_order):
                             print(order_list.to_string(index=False, header=False))
                     calculate_price(complete_order)
                 else:
-                    print("Bot: Seem like you do not order anything :(")
+                    print("Bot: Seem like you did not order anything :(")
                     quit()
         else:
             flag += 1  # increment number of passes
 
         if flag == len(items_list):
-            print("Bot: The food/ beverage is not available.")
+            print("Bot: Sorry, the food/beverage is not available.")
             place_order(complete_order)
 
 
@@ -100,12 +95,11 @@ def calculate_price(complete_order):
     for item_name in complete_order:
         order = full_menu.loc[full_menu['item_name'].str.lower() == item_name.lower()]
         price = order['price'].to_string(index=False, header=False)
-        # print(price)
         price = float(price)
         total_price += price
     total_price = "{:.2f}".format(total_price)
     print("Bot: Total price: RM " + total_price)
-    print("Bot: Please pay RM " + total_price + " upon collection or delivery of food.")
+    print("Bot: Please pay RM " + total_price + " upon collection or delivery of your order.")
     print("Bot: Thanks for ordering! ")
 
 
@@ -119,5 +113,5 @@ def delivery_service(complete_order):
     if number == len(complete_order):
         print("\nBot: Delivery Service can be done!")
     else:
-        print("\nBot: Please come and collect ur food at uni cafeteria in 20 minutes!")
+        print("\nBot: Please come and collect your food at Uni Cafeteria in 20 minutes!")
 

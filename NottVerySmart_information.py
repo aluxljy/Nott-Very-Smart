@@ -4,7 +4,6 @@ full_menu = f.display_menu()
 
 
 def info(inp):
-    # inp = input("You: ")
 
     request = str.lower(inp)
 
@@ -25,4 +24,4 @@ def info(inp):
             flag += 1
 
         if flag == len(lower_items):
-            print("Bot: The food/ beverage is not available.")
+            print("Bot: Sorry, the food/beverage is not available.")
