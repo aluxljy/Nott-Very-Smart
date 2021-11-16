@@ -8,11 +8,11 @@ full_menu = f.display_menu()
 def show_menu():
     print("Bot: Which stall's menu do you wish to look at?")
     inp = input("You: ")
-    check_quit.quit_system(inp)
+    check_quit.quit_system(inp)  # check for the word "quit"
 
-    request_list = f.clean_input(inp)
+    request_list = f.clean_input(inp)  # clean user input
 
-    corrected = list()
+    corrected = list()  # create new list
 
     for request in request_list:
         if error_detector.correction(request) != request:
@@ -24,9 +24,9 @@ def show_menu():
                     ans = ans.lower()  # convert to lowercase
                     check_quit.quit_system(ans)  # check for the word "quit"
                     if yes in ans:
-                        corrected.append(error_detector.correction(request))
+                        corrected.append(error_detector.correction(request))  # do correction
                     else:
-                        corrected.append(" ")
+                        corrected.append(" ")  # append space to list
 
     request_list.extend(corrected)
 
