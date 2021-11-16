@@ -49,4 +49,3 @@ def show_menu():
         print(full_menu.to_string(index=False))  # hide index of data frame
 
 
-show_menu()

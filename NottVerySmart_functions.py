@@ -1,5 +1,6 @@
 import pandas as pd
 import string
+import NottVerySmart_check_quit as check_quit
 
 
 def display_menu():
@@ -20,3 +21,10 @@ def clean_input(inp):
         if word not in request_list:
             request_list.append(word)  # add word to new list if not duplicated
     return request_list
+
+
+def take_input():
+    user_input = input("You: ")
+    user_input = user_input.lower()  # convert to lowercase
+    check_quit.quit_system(user_input)  # check for the word "quit"
+    return user_input

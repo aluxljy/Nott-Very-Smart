@@ -84,7 +84,7 @@ def cancel_order():
     cancel = input("You: ")
     cancel = cancel.lower()
     check_quit.quit_system(cancel)
-    if 'y' or 'Y' in cancel:
+    if 'y' in cancel:
         return True
     else:
         return False

@@ -19,6 +19,7 @@ import NottVerySmart_order as order
 import NottVerySmart_check_quit as check_quit
 import NottVerySmart_recommendation as recommendation
 import NottVerySmart_information as information
+import NottVerySmart_functions as f
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
@@ -100,11 +101,11 @@ net = tflearn.regression(net)
 model = tflearn.DNN(net)
 
 try:
-    model.load("model.tflearn")
+    model.load("NottVerySmart_model.tflearn")
 except:
     model = tflearn.DNN(net)
     model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-    model.save("model.tflearn")
+    model.save("NottVerySmart_model.tflearn")
 
 
 ###############################
@@ -116,6 +117,7 @@ def printdata():
     print(patterns)
     print(tags_of_patterns)
     print(root_words)
+
 
 ########################
 # Bag of word function #
@@ -139,13 +141,6 @@ def bag_of_words(s, root_words):
 #################
 # Chat function #
 #################
-
-
-def take_input(user_input):
-    user_input = input("You: ")
-    user_input = user_input.lower()  # convert to lowercase
-    check_quit.quit_system(user_input)  # check for the word "quit"
-    return user_input
 
 
 def chat():
@@ -180,18 +175,12 @@ def chat():
                 while True:
                     yes = 'y'
                     print("Bot: Do you want to have a look at a specific stall's menu? (Y/N) ")
-                    ans = take_input(ans)
-                    #ans = input("You: ")
-                    #ans = ans.lower()  # convert to lowercase
-                    #check_quit.quit_system(ans)  # check for the word "quit"
+                    ans = f.take_input()
                     if yes in ans:
                         display_menu.show_menu()  # print respective menu based on user input
                     else:
                         print("Bot: Do you want to order now? (Y/N) ")
-                        ans = take_input(ans)
-                        #ans = input("You: ")
-                        #ans = ans.lower()  # convert to lowercase
-                        #check_quit.quit_system(ans)  # check for the word "quit"
+                        ans = f.take_input()
                         if yes in ans:
                             complete_order = list()  # create new list
                             order.place_order(complete_order)  # place order and print receipt
@@ -206,10 +195,7 @@ def chat():
             elif tag == "food_recommendation":
                 print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
-                inp = take_input(inp)
-                #inp = input("You: ")
-                #inp = inp.lower()  # convert to lowercase
-                #check_quit.quit_system(inp)  # check for the word "quit"
+                inp = f.take_input()
                 if 'y' in inp:
                     print("Bot: Which stall would you wish the recommendation to be based on? ")
                     recommendation.recommend("no")  # recommendation based on food
@@ -219,10 +205,7 @@ def chat():
             elif tag == "beverage_recommendation":
                 print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
-                inp = take_input(inp)
-                #inp = input("You: ")
-                #inp = inp.lower()  # convert to lowercase
-                #check_quit.quit_system(inp)  # check for the word "quit"
+                inp = f.take_input()
                 if 'y' in inp:
                     print("Bot: Which stall would you wish the recommendation to be based on? ")
                     recommendation.recommend("yes")  # recommendation based on beverage

@@ -84,5 +84,3 @@ def recommend(is_beverage):
         print("Bot: Or rather, have a look at the stalls available in our cafeteria.")
         print(available_stalls.to_string(index=False))  # hide index of data frame
 
-
-recommend("no")
