@@ -139,6 +139,15 @@ def bag_of_words(s, root_words):
 #################
 # Chat function #
 #################
+
+
+def take_input(user_input):
+    user_input = input("You: ")
+    user_input = user_input.lower()  # convert to lowercase
+    check_quit.quit_system(user_input)  # check for the word "quit"
+    return user_input
+
+
 def chat():
     print("Welcome to Uni Cafeteria Food Ordering System!")
     print("You can always type quit to stop!")
@@ -171,16 +180,18 @@ def chat():
                 while True:
                     yes = 'y'
                     print("Bot: Do you want to have a look at a specific stall's menu? (Y/N) ")
-                    ans = input("You: ")
-                    ans = ans.lower()  # convert to lowercase
-                    check_quit.quit_system(ans)  # check for the word "quit"
+                    ans = take_input(ans)
+                    #ans = input("You: ")
+                    #ans = ans.lower()  # convert to lowercase
+                    #check_quit.quit_system(ans)  # check for the word "quit"
                     if yes in ans:
                         display_menu.show_menu()  # print respective menu based on user input
                     else:
                         print("Bot: Do you want to order now? (Y/N) ")
-                        ans = input("You: ")
-                        ans = ans.lower()  # convert to lowercase
-                        check_quit.quit_system(ans)  # check for the word "quit"
+                        ans = take_input(ans)
+                        #ans = input("You: ")
+                        #ans = ans.lower()  # convert to lowercase
+                        #check_quit.quit_system(ans)  # check for the word "quit"
                         if yes in ans:
                             complete_order = list()  # create new list
                             order.place_order(complete_order)  # place order and print receipt
@@ -195,9 +206,10 @@ def chat():
             elif tag == "food_recommendation":
                 print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
-                inp = input("You: ")
-                inp = inp.lower()  # convert to lowercase
-                check_quit.quit_system(inp)  # check for the word "quit"
+                inp = take_input(inp)
+                #inp = input("You: ")
+                #inp = inp.lower()  # convert to lowercase
+                #check_quit.quit_system(inp)  # check for the word "quit"
                 if 'y' in inp:
                     print("Bot: Which stall would you wish the recommendation to be based on? ")
                     recommendation.recommend("no")  # recommendation based on food
@@ -207,9 +219,10 @@ def chat():
             elif tag == "beverage_recommendation":
                 print("Bot: " + random.choice(responses))  # print random responses
                 print("Bot: Do you want me to make recommendation based on stalls? (Y/N) ")
-                inp = input("You: ")
-                inp = inp.lower()  # convert to lowercase
-                check_quit.quit_system(inp)  # check for the word "quit"
+                inp = take_input(inp)
+                #inp = input("You: ")
+                #inp = inp.lower()  # convert to lowercase
+                #check_quit.quit_system(inp)  # check for the word "quit"
                 if 'y' in inp:
                     print("Bot: Which stall would you wish the recommendation to be based on? ")
                     recommendation.recommend("yes")  # recommendation based on beverage

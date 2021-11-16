@@ -126,9 +126,9 @@
          "context_set": ""
         },
         {"tag": "others",
-         "patterns": ["ok", "sure", "oh", "help", "how to continue", "stuck", "what should I do", "er", "sos"],
+         "patterns": ["ok", "sure", "oh", "help", "how to continue", "stuck", "what should I do", "er", "sos", "alright"],
          "responses": ["You can continue by trying to type words such as recommendation, menu, stalls, hours, overall price or delivery service."],
          "context_set": ""
         }
-]
+    ]
 }
