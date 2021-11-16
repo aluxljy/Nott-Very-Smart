@@ -1,12 +1,15 @@
 import re
 from collections import Counter
+import NottVerySmart_functions as f
+import string
 
 
 def words(text):
-    return re.findall(r'\w+', text.lower())
+    return re.findall(r'\w+', string.capwords(text.lower()))
 
 
 WORDS = Counter(words(open('test.txt').read()))
+word_list = words(open('test.txt').read())
 
 
 def probability(word, n=sum(WORDS.values())):
@@ -36,5 +39,13 @@ def edits1(word):
 
 
 inp = input("You: ")
-print(correction(inp))
+request_list = f.clean_input(inp)
+
+for request in request_list:
+    if correction(request) != request:
+        for wl in word_list:
+            if correction(request) == wl:
+                print("Bots: Instead of " + request + " did you mean " + wl + "?")
+
+
 

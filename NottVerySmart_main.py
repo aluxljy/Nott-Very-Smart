@@ -14,12 +14,11 @@ from nltk.stem.lancaster import LancasterStemmer
 import json
 import numpy as np
 import random
-import display_menu
-import order
-import check_quit
-import recommendation
-import information
-import pickle
+import NottVerySmart_display_menu as display_menu
+import NottVerySmart_order as order
+import NottVerySmart_check_quit as check_quit
+import NottVerySmart_recommendation as recommendation
+import NottVerySmart_information as information
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
@@ -28,7 +27,7 @@ nltk.download('wordnet')
 #########################
 # Get data from intents #
 #########################
-with open('intents.json') as file1:
+with open('NottVerySmart_intents.json') as file1:
     data = json.load(file1)
 
 # try:

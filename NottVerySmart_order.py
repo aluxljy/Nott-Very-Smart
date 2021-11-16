@@ -1,5 +1,5 @@
-import check_quit
-import functions as f
+import NottVerySmart_check_quit as check_quit
+import NottVerySmart_functions as f
 
 full_menu = f.display_menu()
 complete_order = list()
@@ -121,4 +121,3 @@ def delivery_service(complete_order):
     else:
         print("\nBot: Please come and collect ur food at uni cafeteria in 20 minutes!")
 
-# place_order(complete_order)

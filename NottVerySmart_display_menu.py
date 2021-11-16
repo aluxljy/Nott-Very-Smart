@@ -1,5 +1,5 @@
-import check_quit
-import functions as f
+import NottVerySmart_check_quit as check_quit
+import NottVerySmart_functions as f
 
 full_menu = f.display_menu()
 
@@ -30,4 +30,3 @@ def show_menu():
             "Bot: Not sure which menu you wish to view but here's everything that's available on our cafeteria's Menu.")
         print(full_menu.to_string(index=False))  # hide index of data frame
 
-# menu()

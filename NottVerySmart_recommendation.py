@@ -1,7 +1,7 @@
 import random
-import check_quit
+import NottVerySmart_check_quit as check_quit
 
-import functions as f
+import NottVerySmart_functions as f
 
 full_menu = f.display_menu()
 

@@ -1,4 +1,4 @@
-import functions as f
+import NottVerySmart_functions as f
 
 full_menu = f.display_menu()
 
