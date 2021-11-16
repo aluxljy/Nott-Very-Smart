@@ -19,6 +19,7 @@ def info(inp):
         if lower_item in request:
             detail = full_menu.loc[full_menu['item_name'].str.lower() == lower_item]  # select certain rows by label item_name
             detail = detail[['stall_name', 'item_name', 'price', 'delivery_service']]  # # display certain columns only
+            print("Bot: ")
             print(detail.to_string(index=False))  # hide index of data frame
         else:
             flag += 1  # increment number of passes

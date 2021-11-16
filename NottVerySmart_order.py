@@ -20,18 +20,41 @@ def place_order(complete_order):
     flag = 0  # flag to keep track of the overall passes in the loop
 
     for item in items_list:
+        ##############################################
+        # Skip for loop for the following conditions #
+        ##############################################
         if item.lower() == 'kimchi' and request.lower() == "kimchi fried rice":
             continue
+        if item.lower() == 'bulgogi' and request.lower() == "bulgogi with rice":
+            continue
+        if item.lower() == 'miso soup' and request.lower() in ["chicken teriyaki lunch set (miso soup)",
+                                                               "tempura lunch set (miso soup)",
+                                                               "vegetarian lunch Set (miso soup)"]:
+            continue
+        if item.lower() == 'chawanmushi' and request.lower() in ["chicken teriyaki dinner set (chawanmushi)",
+                                                                 "tempura dinner set (chawanmushi)",
+                                                                 "vegetarian dinner set (chawanmushi)"]:
+            continue
+        if item.lower() == 'tempura' and request.lower() in ["tempura soba",
+                                                             "zaru soba + tempura",
+                                                             "tempura udon", "zaru udon + tempura",
+                                                             "tempura lunch set (miso soup)",
+                                                             "tempura dinner set (chawanmushi)"]:
+            continue
+        if item.lower() == 'zaru soba' and request.lower() == "zaru soba + tempura":
+            continue
+        if item.lower() == 'zaru udon' and request.lower() == "zaru udon + tempura":
+            continue
+
         if item in request:
             order_name = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
-            complete_order.append(order_name['item_name'].to_string(index=False, header=False))
-
+            complete_order.append(order_name['item_name'].to_string(index=False, header=False)) # insert the ordered items into a list
             order_list = full_menu.loc[full_menu['item_name'].str.lower() == item.lower()]
             order_list = order_list[['item_name', 'price', 'delivery_service']]  # display certain columns only
             print("Bot: Here is your order: ")
             print(order_list.to_string(index=False))
-            if not confirm_order():
-                if not cancel_order():
+            if not confirm_order():  # ask user to confirm order
+                if not cancel_order():  # check whether want to cancel order or not
                     print("Bot: Here is your order:")
                     print(order_list.to_string(index=False))
                 else:
@@ -45,7 +68,7 @@ def place_order(complete_order):
                 place_order(complete_order)
             else:
                 i = 0
-                if len(complete_order) != 0:
+                if len(complete_order) != 0:  # check whether the user has order any food or beverages
                     delivery_service(complete_order)
                     print("Bot: Here is your receipt: ")
                     for item_name in complete_order:
@@ -68,6 +91,7 @@ def place_order(complete_order):
             place_order(complete_order)
 
 
+# ask user to confirm order
 def confirm_order():
     print("Bot: Confirm? (Y/N) ")
     confirm = input("You: ")
@@ -79,6 +103,7 @@ def confirm_order():
         return False
 
 
+# if user chooses not to confirm order, then it will ask the user again to ensure the user wants to cancel order
 def cancel_order():
     print("Bot: Are you sure you want to cancel this order? (Y/N) ")
     cancel = input("You: ")
@@ -90,6 +115,7 @@ def cancel_order():
         return False
 
 
+# calculate the total price of the order
 def calculate_price(complete_order):
     total_price = 0
     for item_name in complete_order:
@@ -103,6 +129,7 @@ def calculate_price(complete_order):
     print("Bot: Thanks for ordering! ")
 
 
+# if all the items ordered provide delivery service, then will auto deliver, else pick up
 def delivery_service(complete_order):
     number = 0
     for item_name in complete_order:
@@ -112,6 +139,14 @@ def delivery_service(complete_order):
             number += 1
     if number == len(complete_order):
         print("\nBot: Delivery Service can be done!")
+        while True:
+            print("Bot: Please enter your address.")  # ask for customer's address
+            address = input("You: ")
+            print("Bot: Your address is " + address)
+            print("Bot: Confirm? (Y/N) ")
+            ans = f.take_input()
+            if 'y' in ans:
+                print("Bot: Address recorded!")
+                break
     else:
         print("\nBot: Please come and collect your food at Uni Cafeteria in 20 minutes!")
-
