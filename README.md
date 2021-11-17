@@ -26,9 +26,9 @@ All the files used to build this project:
 
 Moving forward/scalability:
 1. Shortcomings and improvements that can be made on the chatbot
-- Spelling error detector
-a. Shortcomings: can only detect single words and not a string of words, can only detect spelling errors to a certain extent, words that are able to be detected are limited
-b. Improvements: add more words to the dictionary, generate another function to accommodate more variants of the words to increase sensitivity
+Spelling error detector
+- Shortcomings: can only detect single words and not a string of words, can only detect spelling errors to a certain extent, words that are able to be detected are limited
+- Improvements: add more words to the dictionary, generate another function to accommodate more variants of the words to increase sensitivity
 - Data in the json file 
 a. Shortcomings: might not be sufficient to train a highly accurate model, however if more data is fed into the json file, greater noise may also be introduced
 b. Improvements: include more but important keywords under each tag
