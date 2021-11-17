@@ -1,4 +1,4 @@
-# Group Name: Nott-Very-Smart
+# Team Name: Nott-Very-Smart
 # Authors: Looi Jie Ying, Liew Qian Hui
 # Project Name: Food Ordering Chatbot
 # Date: 10/11/2021
