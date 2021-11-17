@@ -30,14 +30,14 @@ Moving forward/scalability:
 (a)Shortcomings: can only detect single words and not a string of words, can only detect spelling errors to a certain extent, words that are able to be detected are limited
 (b)Improvements: add more words to the dictionary, generate another function to accommodate more variants of the words to increase sensitivity
 - Data in the json file 
-a. Shortcomings: might not be sufficient to train a highly accurate model, however if more data is fed into the json file, greater noise may also be introduced
-b. Improvements: include more but important keywords under each tag
+(a)Shortcomings: might not be sufficient to train a highly accurate model, however if more data is fed into the json file, greater noise may also be introduced
+(b)Improvements: include more but important keywords under each tag
 - Cleanliness of the codes
-a. Shortcomings: codes may not be clean enough due to time constraints
-b. Improvements: do more refactoring on the codes and reduce repetitive codes as much as possible
+(a)Shortcomings: codes may not be clean enough due to time constraints
+(b)Improvements: do more refactoring on the codes and reduce repetitive codes as much as possible
 - Print receipt function
-a. Shortcomings: unable to save receipts automatically
-b. Improvements: add functions to allow the users to save the receipts in the form of a txt file for reference
+(a)Shortcomings: unable to save receipts automatically
+(b)Improvements: add functions to allow the users to save the receipts in the form of a txt file for reference
 
 2. Strategies to upscale the chatbot
 - Build a GUI interface for the chatbot to elevate user experience
