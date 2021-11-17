@@ -219,7 +219,7 @@ def chat():
                 print("Bot: " + random.choice(responses))  # print random responses
         else:
             print("Bot: I don't understand.. can you rephrase your word :(")
-            print("Bot: Or rather, you can try typing words such as recommendation, menu, stalls, hours, overall price or delivery service.")
+            print("Bot: Or rather, you can type the word help to seek for assistance.")
 
 
 chat()
