@@ -81,6 +81,9 @@ for index, details in enumerate(patterns):
     training.append(bag)
     output.append(output_row)
 
+# training model refer to youtube tutorial
+# https://www.youtube.com/watch?v=PzzHOvpqDYs&list=PLzMcBGfZo4-ndH9FoC4YWHGXG5RZekt-Q&index=3
+
 ####################################################
 # Convert training data and output to numpy arrays #
 ####################################################
@@ -174,7 +177,7 @@ def chat():
                 display_menu.show_menu()  # print full menu
                 while True:
                     yes = 'y'
-                    print("Bot: Do you want to have a look at a specific stall's menu? (Y/N) ")
+                    print("Bot: Do you want to have a look at another stall's menu? (Y/N) ")
                     ans = f.take_input()
                     if yes in ans:
                         display_menu.show_menu()  # print respective menu based on user input
